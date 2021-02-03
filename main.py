@@ -4,14 +4,10 @@ import json
 
 app = Flask(__name__)
 
-# TODO: Add in Synthea source grabber here or something when server starts
-# TODO: For a provided patient ID, grab the json info of the patient from synthea
-# TODO: If patient ID cannot be found, then return a 404 JSON response
-# TODO: Update params
-
-#
+# Load file with all synthetic Patient data
 with open('all_json.json') as infile:
     all_patient_data = json.load(infile)
+
 
 # 404 JSON
 not_found_response = [
@@ -21,15 +17,15 @@ not_found_response = [
 ]
 
 
-# Return all patients
-@app.route('/api/v1/patient/all', methods=['GET'])
-def api_all():
-    """
-    :return: Return all available patient data in JSON
-    """
-
-    print(' [INFO] /api/v1/jobs/oldest API Query: {}'.format(all_patient_data))
-    return make_response(jsonify(all_patient_data), 200)  # jsonify automatically sets mimetype to application/json
+# # Return all patients
+# @app.route('/api/v1/patient/all', methods=['GET'])
+# def api_all():
+#     """
+#     :return: Return all available patient data in JSON
+#     """
+#
+#     print(' [INFO] /api/v1/jobs/oldest API Query: {}'.format(all_patient_data))
+#     return make_response(jsonify(all_patient_data), 200)  # jsonify automatically sets mimetype to application/json
 
 
 # Return specific patient data
