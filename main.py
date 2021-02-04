@@ -44,7 +44,7 @@ def api_patient(patient_id):
 
     if not response:
         print(" [INFO] (404) /api/v1/patient/<patient_id> API Query: {}".format(patient_id))
-        return make_response(jsonify(not_found_response), 200)
+        return make_response(jsonify(not_found_response), 404)
 
     print(" [INFO] /api/v1/patient/<patient_id> API Query: {}".format(response))
     return make_response(jsonify(response), 200)
